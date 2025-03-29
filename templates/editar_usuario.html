@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Configuración básica del documento -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Usuario</title>
+    <!-- Enlaces a hojas de estilo y fuentes -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Encabezado y navegación -->
+    <header>
+        <nav>
+            <section class="contenedor nav">
+                <!-- Logo del sitio -->
+                <div class="logo">
+                    <img src="{{ url_for('static', filename='img/logo.png') }}" alt>
+                </div>
+                <!-- Enlaces de navegación -->
+                <div class="enlaces-header">
+                    <a href="{{ url_for('index') }}">Inicio</a>
+                    <a href="{{ url_for('index') }}#ruta-aprendizaje">Cursos</a>
+                    <a href="{{ url_for('introduccion') }}">Introducción</a>
+                    <a href="{{ url_for('login') }}" id="loginLink">Login</a>
+                    <a href="{{ url_for('registro') }}" id="registroLink">Registro</a>
+                    <a href="{{ url_for('mis_cursos') }}" id="misCursosLink" style="display: none;">Mis Cursos</a>
+                    <a href="{{ url_for('logout') }}" id="logoutLink" style="display: none;">Cerrar sesión</a>
+                    <a href="{{ url_for('gestion_usuarios') }}" id="adminLink" style="display: none;">Gestión de Usuarios</a>
+                </div>
+                <!-- Icono de menú hamburguesa -->
+                <div class="hamburguer">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+            </section>
+        </nav>
+    </header>
+
+    <!-- Sección principal del formulario de edición de usuario -->
+    <section class="contenedor1">
+        <h2>Editar Usuario</h2>
+        <form method="POST" action="{{ url_for('editar_usuario', usuario_id=usuario.id) }}">
+            <!-- Campo para editar el nombre -->
+            <div class="input-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" value="{{ usuario.nombre }}" required>
+            </div>
+            <!-- Campo para editar el email -->
+            <div class="input-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" value="{{ usuario.email }}" required>
+            </div>
+            <!-- Checkbox para indicar si es administrador -->
+            <div class="input-group">
+                <label for="es_admin">Es Administrador:</label>
+                <input type="checkbox" id="es_admin" name="es_admin" {% if usuario.es_admin %}checked{% endif %}>
+            </div>
+            <!-- Botón para guardar los cambios -->
+            <button type="submit">Guardar Cambios</button>
+        </form>
+    </section>
+
+    <!-- Scripts necesarios para la funcionalidad del sitio -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://kit.fontawesome.com/19c65eb0fe.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
+    <script src="https://files.bpcontent.cloud/2025/02/26/01/20250226011259-2TN23EJ8.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

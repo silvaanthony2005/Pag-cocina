@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Configuración básica del documento -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Usuarios</title>
+    <!-- Enlaces a hojas de estilo y fuentes -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Encabezado y navegación -->
+    <header>
+        <nav>
+            <section class="contenedor nav">
+                <!-- Logo del sitio -->
+                <div class="logo">
+                    <img src="{{ url_for('static', filename='img/logo.png') }}" alt>
+                </div>
+                <!-- Enlaces de navegación -->
+                <div class="enlaces-header">
+                    <a href="{{ url_for('index') }}">Inicio</a>
+                    <a href="{{ url_for('index') }}#ruta-aprendizaje">Cursos</a>
+                    <a href="{{ url_for('introduccion') }}">Introducción</a>
+                    <a href="{{ url_for('login') }}" id="loginLink">Login</a>
+                    <a href="{{ url_for('registro') }}" id="registroLink">Registro</a>
+                    <a href="{{ url_for('mis_cursos') }}" id="misCursosLink" style="display: none;">Mis Cursos</a>
+                    <a href="{{ url_for('logout') }}" id="logoutLink" style="display: none;">Cerrar sesión</a>
+                </div>
+                <!-- Icono de menú hamburguesa -->
+                <div class="hamburguer">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+            </section>
+        </nav>
+    </header>
+
+    <!-- Sección principal de gestión de usuarios -->
+    <section class="contenedor1">
+        <h2>Gestión de Usuarios</h2>
+        <!-- Tabla de usuarios -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Es Admin</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Iteración sobre los usuarios -->
+                {% for usuario in usuarios %}
+                    <tr>
+                        <td>{{ usuario.nombre }}</td>
+                        <td>{{ usuario.email }}</td>
+                        <td>{{ 'Sí' if usuario.es_admin else 'No' }}</td>
+                        <td>
+                            <!-- Enlaces para editar y eliminar usuarios -->
+                            <a href="{{ url_for('editar_usuario', usuario_id=usuario.id) }}">Editar</a>
+                            <a href="{{ url_for('eliminar_usuario', usuario_id=usuario.id) }}" onclick="return confirm('¿Estás seguro de eliminar este usuario?')">Eliminar</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Scripts necesarios para la funcionalidad del sitio -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://kit.fontawesome.com/19c65eb0fe.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
+    <script src="https://files.bpcontent.cloud/2025/02/26/01/20250226011259-2TN23EJ8.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html> 

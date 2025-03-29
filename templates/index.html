@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Configuración básica del documento -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso</title>
+    <!-- Enlaces a hojas de estilo y fuentes -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Encabezado y navegación -->
+    <header>
+        <nav>
+            <section class="contenedor nav">
+                <!-- Logo del sitio -->
+                <div class="logo">
+                    <img src="{{ url_for('static', filename='img/logo.png') }}" alt>
+                </div>
+                <!-- Enlaces de navegación -->
+                <div class="enlaces-header">
+                    <a href="{{ url_for('introduccion') }}">Introducción</a>
+                    <a href="{{ url_for('index') }}#ruta-aprendizaje">Cursos</a>
+                    <a href="{{ url_for('login') }}" id="loginLink">Login</a>
+                    <a href="{{ url_for('registro') }}" id="registroLink">Registro</a>
+                    <a href="{{ url_for('mis_cursos') }}" id="misCursosLink" style="display: none;">Mis Cursos</a>
+                    <a href="{{ url_for('gestion_usuarios') }}" id="adminLink" style="display: none;">Gestión de Usuarios</a>
+                    <a href="{{ url_for('logout') }}" id="logoutLink" style="display: none;">Cerrar sesión</a>
+                </div>
+                <!-- Icono de menú hamburguesa -->
+                <div class="hamburguer">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+            </section>
+        </nav>
+        <!-- Contenido principal del encabezado -->
+        <div class="contenedor">
+            <section class="contenido-header">
+                <section class="textos-header">
+                    <h1>¿Qué esperas para aprender a cocinar?</h1>
+                    <p>Cocinar es una habilidad esencial que no solo permite preparar comidas deliciosas y nutritivas, sino que también fomenta la creatividad, la independencia y el ahorro económico. Aprender a cocinar no significa solo seguir recetas, implica conocer técnicas, ingredientes y procesos que pueden transformar simples alimentos en platos extraordinarios.</p>
+                    <a href="{{ url_for('introduccion') }}">Learn more</a>
+                </section>
+                <img src="{{ url_for('static', filename='img/principal.png') }}" alt="">
+            </section>
+        </div>
+    </header>
+    <!-- Sección de ruta de aprendizaje -->
+    <section id="ruta-aprendizaje" class="ruta">
+        <div class="contenedor1">
+            <h2 class="titulo">Ruta de aprendizaje</h2>
+            <div id="cursosInscritos"></div>
+            <div class="contenedor-articulo">
+                <!-- Tarjetas de cursos disponibles -->
+                <div class="articulo" data-aos="zoom-in-right">
+                    <i class="fa-solid fa-book-bookmark"></i>
+                    <h3>Fundamentos de la cocina</h3>
+                    <p>Conocer estos fundamentos no solo facilita seguir recetas, sino que también permite experimentar y desarrollar creatividad en la cocina.</p>
+                    <a href="#" onclick="inscribirseEnCurso('Fundamentos de la cocina')">Inscribirse</a>
+                </div>
+                <div class="articulo" data-aos="zoom-in-right">
+                    <i class="fa-solid fa-bowl-food"></i>
+                    <h3>Ingredientes y su manipulación</h3>
+                    <p>Los ingredientes son la base de cualquier receta, y su correcta manipulación es clave para lograr platos sabrosos y seguros.</p>
+                    <a href="#" onclick="inscribirseEnCurso('Ingredientes y su manipulación')">Inscribirse</a>
+                </div>
+                <div class="articulo" data-aos="zoom-in-right">
+                    <i class="fa-solid fa-fire-burner"></i>
+                    <h3>Técnicas de cocción</h3>
+                    <p>Cada técnica influye en el sabor, la apariencia y el valor nutricional de los alimentos. Desde el horneado y la fritura hasta el baño María y la cocción al vapor, aplicar estas técnicas es clave para obtener resultados perfectos.</p>
+                    <a href="#" onclick="inscribirseEnCurso('Técnicas de cocción')">Inscribirse</a>
+                </div>
+                <div class="articulo" data-aos="zoom-in-right">
+                    <i class="fa-solid fa-kitchen-set"></i>
+                    <h3>Preparación de platos básicos</h3>
+                    <p>Consiste en aprender recetas sencillas como ensaladas, arroces, sopas, huevos y pastas, dominando técnicas esenciales como el corte de ingredientes, la cocción y el sazonado.</p>
+                    <a href="#" onclick="inscribirseEnCurso('Preparación de platos básicos')">Inscribirse</a>
+                </div>
+                <div class="articulo" data-aos="zoom-in-right">
+                    <i class="fa-solid fa-globe"></i>
+                    <h3>Cocina Internacional</h3>
+                    <p>Conocer la cocina internacional es importante porque amplía nuestra perspectiva gastronómica, permitiéndonos descubrir nuevos sabores, ingredientes y técnicas culinarias.</p>
+                    <a href="#" onclick="inscribirseEnCurso('Cocina Internacional')">Inscribirse</a>
+                </div>
+                <div class="articulo" data-aos="zoom-in-right">
+                    <i class="fa-solid fa-sink"></i>
+                    <h3>Seguridad e higiene</h3>
+                    <p>La seguridad e higiene en la cocina son esenciales para prevenir enfermedades y accidentes, garantizando que los alimentos sean seguros mediante un espacio limpio, evitando la contaminación cruzada.</p>
+                    <a href="#" onclick="inscribirseEnCurso('Seguridad e higiene')">Inscribirse</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Sección de preguntas frecuentes -->
+    <section class="questions contenedor">
+        <section class="textos-questions">
+            <h1>Disfruta de clases personalizadas</h1>
+            <p> Enfocarte en tipos de cocina que te apasionen, como platos internacionales, pastelería o comida saludable. Estas clases ofrecen una experiencia más enriquecedora y aceleran tu aprendizaje, permitiéndote avanzar a tu propio ritmo.</p>
+            <a href="{{ url_for('introduccion') }}"> Learn more</a>
+        </section>
+        <img src="{{ url_for('static', filename='img/a3.png') }}" alt="" data-aos="zoom-out-up" data-aos-duration="2000">
+    </section>
+
+    <section class="tiempo">
+        <div class="contenedor conten-tiempo">
+            <section class="horas">
+                <div class="hora" data-aos="zoom-in-left">
+                    <h4>100 horas</h4>
+                    <p>Donde aprenderas a dominar técnicas básicas, cortar correctamente, cómo asar, freír y saltear, y mucho mas.</p>
+                </div>
+                <div class="hora" data-aos="zoom-in-left">
+                    <h4>150 horas</h4>
+                    <p>Donde aprenderas a preparar carnes y pescados de manera sencilla, y cómo controlar el punto de cocción.</p>
+                </div>
+                <div class="hora" data-aos="zoom-in-left">
+                    <h4>50 horas</h4>
+                    <p>Donde comenzaras con recetas fáciles como ensaladas, sopas, guisos y pastas.</p>
+                </div>
+                <div class="hora" data-aos="zoom-in-left">
+                    <h4>40 horas</h4>
+                    <p>En el cual experimentaras el uso de hierbas y especias para dar sabor a tus comidas.</p>
+                </div>
+            </section>
+            <section class="tiempo-texto">
+                <h4>Aprende con nosotros!</h4>
+                <p> Aprende con nosotros todas las bases y herramientas que necesitas para ser un gran cheft.</p>
+                <a href="{{ url_for('introduccion') }}">Ingrese aqui </a>
+            </section>
+    </section>
+
+<section class="contenedor1 servicios">
+    <img src="{{ url_for('static', filename='img/a1.png') }}" alt="" data-aos="zoom-out-up">
+    <div class="facetas">
+        <h4><i class="fa-solid fa-circle-check"> </i> Comienza con lo básico</h4>
+        <h4><i class="fa-solid fa-circle-check"> </i> Usa ingredientes frescos</h4>
+        <h4><i class="fa-solid fa-circle-check"> </i> Organiza tu espacio</h4>
+        <h4><i class="fa-solid fa-circle-check"> </i> Sazona al gusto</h4>
+        <h4><i class="fa-solid fa-circle-check"> </i> Practica constantemente</h4>
+    </div>
+</section>
+
+<footer>
+    <div class="partFooter">
+        <img src="{{ url_for('static', filename='img/logo.png') }}" alt="">
+    </div>
+    <div class="partFooter">
+        <h4><a href="#"> Servicios </a></h4>
+    </div>
+    <div class="partFooter">
+        <h4><a href="#"> Acerca de nosotros </a></h4>
+    </div>
+    <div class="partFooter">
+        <h4>Redes Sociales</h4>
+        <div class="social-media">
+            <i class="fa-brands fa-youtube"> </i>
+            <i class="fa-brands fa-twitter"> </i>
+            <i class="fa-brands fa-instagram"> </i>
+            </div> 
+        </div>
+    </div>
+</footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://kit.fontawesome.com/19c65eb0fe.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
+    <script src="https://files.bpcontent.cloud/2025/02/26/01/20250226011259-2TN23EJ8.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Configuración básica del documento -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introducción a los Cursos</title>
+    <!-- Enlaces a hojas de estilo y fuentes -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Encabezado y navegación -->
+    <header>
+        <nav>
+            <section class="contenedor nav">
+                <!-- Logo del sitio -->
+                <div class="logo">
+                    <img src="{{ url_for('static', filename='img/logo.png') }}" alt>
+                </div>
+                <!-- Enlaces de navegación -->
+                <div class="enlaces-header">
+                    <a href="{{ url_for('index') }}">Inicio</a>
+                    <a href="{{ url_for('index') }}#ruta-aprendizaje">Cursos</a>
+                    <a href="{{ url_for('login') }}" id="loginLink">Login</a>
+                    <a href="{{ url_for('registro') }}" id="registroLink">Registro</a>
+                    <a href="{{ url_for('mis_cursos') }}" id="misCursosLink" style="display: none;">Mis Cursos</a>
+                    <a href="{{ url_for('gestion_usuarios') }}" id="adminLink" style="display: none;">Gestión de Usuarios</a>
+                    <a href="{{ url_for('logout') }}" id="logoutLink" style="display: none;">Cerrar sesión</a>
+                </div>
+                <!-- Icono de menú hamburguesa -->
+                <div class="hamburguer">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+            </section>
+        </nav>
+    </header>
+    <!-- Sección de introducción -->
+    <section class="intro-section">
+        <div class="intro-container">
+            <div class="intro-content">
+                <div class="intro-text">
+                    <h1 class="intro-title" data-aos="fade-right">Bienvenido a Nuestros Cursos de Cocina</h1>
+                    <p class="intro-lead" data-aos="fade-right">Nuestros cursos están diseñados para llevarte desde los fundamentos básicos hasta técnicas avanzadas de cocina. Aprenderás sobre ingredientes, técnicas de cocción, preparación de platos básicos, cocina internacional y mucho más. ¡Comienza tu viaje culinario con nosotros!</p>
+                    
+                    <!-- Bloque de información sobre por qué elegirnos -->
+                    <div class="intro-block" data-aos="fade-right">
+                        <h3 class="intro-subtitle">¿Por qué elegirnos?</h3>
+                        <p class="intro-paragraph">Ofrecemos una amplia variedad de cursos que se adaptan a todos los niveles de experiencia. Desde principiantes que están dando sus primeros pasos en la cocina, hasta chefs experimentados que buscan perfeccionar sus habilidades.</p>
+                    </div>
+
+                    <!-- Bloque de información sobre instructores -->
+                    <div class="intro-block" data-aos="fade-right">
+                        <h3 class="intro-subtitle">Nuestros Instructores</h3>
+                        <p class="intro-paragraph">Nuestros instructores son profesionales certificados con años de experiencia en la industria culinaria. Cada uno de ellos está comprometido con tu aprendizaje y éxito.</p>
+                    </div>
+
+                    <!-- Bloque de información sobre instalaciones -->
+                    <div class="intro-block" data-aos="fade-right">
+                        <h3 class="intro-subtitle">Instalaciones</h3>
+                        <p class="intro-paragraph">Nuestras instalaciones cuentan con equipos profesionales y espacios diseñados específicamente para el aprendizaje culinario.</p>
+                    </div>
+
+                    <!-- Bloque de información sobre horarios -->
+                    <div class="intro-block" data-aos="fade-right">
+                        <h3 class="intro-subtitle">Horarios</h3>
+                        <p class="intro-paragraph">Ofrecemos horarios flexibles, incluyendo cursos intensivos de fin de semana y programas extensivos para quienes prefieren un ritmo más pausado.</p>
+                    </div>
+
+                    <!-- Lista de características destacadas -->
+                    <div class="intro-features" data-aos="fade-right">
+                        <h4 class="feature-item"><i class="fa-solid fa-check"></i> Talleres de técnicas específicas</h4>
+                        <h4 class="feature-item"><i class="fa-solid fa-check"></i> Clases de nutrición y planificación</h4>
+                        <h4 class="feature-item"><i class="fa-solid fa-check"></i> Introducción a cocinas del mundo</h4>
+                        <h4 class="feature-item"><i class="fa-solid fa-check"></i> Talleres de repostería y panadería</h4>
+                        <h4 class="feature-item"><i class="fa-solid fa-check"></i> Clases de maridaje y coctelería</h4>
+                    </div>
+
+                    <!-- Botón para ver cursos -->
+                    <a href="{{ url_for('index') }}#ruta-aprendizaje" onclick="mostrarMensajeFlash()" class="intro-button" data-aos="fade-right">Ver cursos</a>
+                </div>
+                <!-- Imágenes de la sección de introducción -->
+                <div class="intro-image">
+                    <img src="{{ url_for('static', filename='img/comida3.png') }}" alt="" data-aos="zoom-out-up" data-aos-duration="2000">
+                    <img src="{{ url_for('static', filename='img/panes.png') }}" alt="" class="intro-image-secondary" data-aos="zoom-out-up" data-aos-duration="2000" data-aos-delay="200">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Sección de ubicación -->
+    <section class="ruta">
+        <div class="contenedor1">
+            <h2>Nuestra Ubicación</h2>
+            <!-- Mapa de OpenStreetMap -->
+            <iframe 
+                src="https://www.openstreetmap.org/export/embed.html?bbox=-66.8525%2C10.4800%2C-66.8425%2C10.4900&amp;layer=mapnik&amp;marker=10.495145%2C-66.829104" 
+                width="100%" 
+                height="300" 
+                frameborder="0" 
+                style="border:0" 
+                allowfullscreen>
+            </iframe>
+            <p>Universidad Alejandro de Humboldt, Dos Caminos, Venezuela</p>
+        </div>
+    </section>
+    <!-- Pie de página -->
+    <footer>
+        <div class="partFooter">
+            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="">
+        </div>
+        <div class="partFooter">
+            <h4><a href="#"> Servicios </a></h4>
+        </div>
+        <div class="partFooter">
+            <h4><a href="#"> Acerca de nosotros </a></h4>
+        </div>
+        <div class="partFooter">
+            <h4>Redes Sociales</h4>
+            <div class="social-media">
+                <i class="fa-brands fa-youtube"> </i>
+                <i class="fa-brands fa-twitter"> </i>
+                <i class="fa-brands fa-instagram"> </i>
+            </div>
+        </div>
+    </footer>
+    <!-- Scripts necesarios para la funcionalidad del sitio -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://kit.fontawesome.com/19c65eb0fe.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
+    <script src="https://files.bpcontent.cloud/2025/02/26/01/20250226011259-2TN23EJ8.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html> 
